@@ -39,3 +39,10 @@ def root():
 @app.get("/health")
 def health():
     return {"status": "healthy"}
+
+@app.post("/seed")
+def seed_endpoint():
+    """Convenience endpoint to load sample data (dev only)."""
+    from app.seed import seed
+    seed()
+    return {"message": "Sample agents seeded"}
