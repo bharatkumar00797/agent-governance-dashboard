@@ -2,53 +2,52 @@
 
 Central platform for enterprises to **discover, monitor, and control** all AI agents running across the organization.
 
-## Features (Current)
-- Agent Registry / Inventory with full CRUD
-- Risk scoring (rule-based)
-- Status management (active / quarantined / inactive)
-- Shadow agent flagging
-- Filters by status, type, risk level
-- Clean Next.js dashboard UI
+## Features
+- Full Agent Registry (CRUD)
+- Rule-based **risk scoring**
+- Status management (active / quarantined / inactive / draft)
+- Shadow agent detection flag
+- Filters by status, type, risk
+- Clean modern dashboard UI
+- Auto-seeds sample data on first run
 
 ## Tech Stack
 - **Frontend**: Next.js 15 + TypeScript + Tailwind CSS
 - **Backend**: FastAPI + SQLAlchemy + Pydantic
 - **Database**: SQLite (local) / PostgreSQL (production)
 
-## Quick Start
+## Quick Start (Local)
 
-### 1. Backend
+### Backend
 ```bash
 cd backend
 python -m venv venv
-source venv/bin/activate   # or venv\\Scripts\\activate on Windows
+source venv/bin/activate          # Windows: venv\\Scripts\\activate
 pip install -r requirements.txt
 uvicorn app.main:app --reload --port 8000
 ```
-API docs: http://localhost:8000/docs
+On first start it will automatically create 5 sample agents.
 
-### 2. Frontend
+API docs → http://localhost:8000/docs
+
+### Frontend
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
-Dashboard: http://localhost:3000
+Dashboard → http://localhost:3000
 
-Set `NEXT_PUBLIC_API_URL=http://localhost:8000` if needed.
+## Deploy
+See [DEPLOY.md](./DEPLOY.md) for Railway (backend) + Vercel (frontend) steps.
 
-## API Endpoints
-| Method | Path | Description |
-|--------|------|-------------|
-| POST | /api/v1/agents | Register agent |
-| GET | /api/v1/agents | List + filters |
-| GET | /api/v1/agents/{id} | Get one |
-| PATCH | /api/v1/agents/{id} | Update |
-| DELETE | /api/v1/agents/{id} | Delete |
-| POST | /api/v1/agents/{id}/quarantine | Quarantine |
-| POST | /api/v1/agents/{id}/activate | Activate |
-
-## Status
-Day 1–3 complete. Backend + full frontend ready for local testing and deployment.
+## Project Status
+| Area              | Status      |
+|-------------------|-------------|
+| Backend API       | ✅ Complete |
+| Risk scoring      | ✅ Complete |
+| Frontend UI       | ✅ Complete |
+| Sample data       | ✅ Auto-seed|
+| Deployment ready  | ✅ Yes      |
 
 Built with Grok.
