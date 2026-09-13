@@ -49,5 +49,3 @@ See [DEPLOY.md](./DEPLOY.md) for Railway (backend) + Vercel (frontend) steps.
 | Frontend UI       | ✅ Complete |
 | Sample data       | ✅ Auto-seed|
 | Deployment ready  | ✅ Yes      |
-
-Built with Grok.
