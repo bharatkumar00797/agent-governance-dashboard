@@ -3,9 +3,12 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import os
 
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./agentgov.db")
+# Railway sometimes sets DATABASE_URL to an empty string.
+# Treat empty string the same as missing.
+raw_url = os.getenv("DATABASE_URL") or ""
+DATABASE_URL = raw_url.strip() if raw_url.strip() else "sqlite:///./agentgov.db"
 
-# For SQLite (local dev) we need check_same_thread=False
+# For SQLite (local / fallback) we need check_same_thread=False
 connect_args = {"check_same_thread": False} if DATABASE_URL.startswith("sqlite") else {}
 
 engine = create_engine(DATABASE_URL, connect_args=connect_args)
