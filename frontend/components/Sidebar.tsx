@@ -52,7 +52,7 @@ export function Sidebar() {
       </nav>
 
       <div className="p-4 text-xs text-slate-500 border-t border-slate-800">
-        v0.2.0 · Built with Grok
+        v0.2.1
       </div>
     </aside>
   );
