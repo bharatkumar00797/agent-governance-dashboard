@@ -1,5 +1,13 @@
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
+// Temporary debug – remove later
+if (typeof window !== "undefined") {
+  console.log("[DEBUG] NEXT_PUBLIC_API_URL =", process.env.NEXT_PUBLIC_API_URL);
+  console.log("[DEBUG] Final API_BASE =", API_BASE);
+  (window as any).DEBUG_API_URL = process.env.NEXT_PUBLIC_API_URL;
+  (window as any).DEBUG_API_BASE = API_BASE;
+}
+
 export interface Agent {
   id: number;
   name: string;
