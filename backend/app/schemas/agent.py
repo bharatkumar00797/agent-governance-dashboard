@@ -38,7 +38,10 @@ class AgentResponse(AgentBase):
     created_at: datetime
     updated_at: datetime
 
-    model_config = ConfigDict(from_attributes=True)
+    # SQLAlchemy reserves .metadata on the model, so the column lives on metadata_.
+    metadata: Dict[str, Any] = Field(default_factory=dict, validation_alias="metadata_")
+
+    model_config = ConfigDict(from_attributes=True, populate_by_name=True)
 
 class AgentListResponse(BaseModel):
     total: int

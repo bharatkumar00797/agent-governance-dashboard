@@ -9,7 +9,8 @@ from app.services.risk import calculate_risk_score
 
 router = APIRouter()
 
-@router.post("/", response_model=AgentResponse, status_code=201)
+@router.post("", response_model=AgentResponse, status_code=201)
+@router.post("/", response_model=AgentResponse, status_code=201, include_in_schema=False)
 def register_agent(agent_in: AgentCreate, db: Session = Depends(get_db)):
     """Register a new AI agent in the inventory."""
     risk = calculate_risk_score(
@@ -39,7 +40,8 @@ def register_agent(agent_in: AgentCreate, db: Session = Depends(get_db)):
     db.refresh(db_agent)
     return db_agent
 
-@router.get("/", response_model=AgentListResponse)
+@router.get("", response_model=AgentListResponse)
+@router.get("/", response_model=AgentListResponse, include_in_schema=False)
 def list_agents(
     skip: int = Query(0, ge=0),
     limit: int = Query(50, ge=1, le=200),
