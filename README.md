@@ -38,6 +38,11 @@ npm run dev
 ```
 Dashboard → http://localhost:3000
 
+## Demo
+
+- Dashboard: https://agent-governance-dashboard-lovat.vercel.app
+- API: https://agent-governance-dashboard-production.up.railway.app
+
 ## Deploy
 See [DEPLOY.md](./DEPLOY.md) for Railway (backend) + Vercel (frontend) steps.
 
